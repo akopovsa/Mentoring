@@ -1,9 +1,9 @@
 <application>
   <component name="FindSettings">
-    <option name="customScope" value="Directory '[Mentoring EPAM] - ...'" />
-    <option name="defaultScopeName" value="Directory '[Mentoring EPAM] - ...'" />
+    <option name="customScope" value="Directory '[CRA] - ...\CRA'" />
+    <option name="defaultScopeName" value="Directory '[CRA] - ...\CRA'" />
     <option name="localCaseSensitive" value="true" />
     <option name="LOCAL_CASE_SENSITIVE_SEARCH" value="true" />
-    <option name="SEARCH_SCOPE" value="Directory '[Mentoring EPAM] - ...'" />
+    <option name="SEARCH_SCOPE" value="Directory '[CRA] - ...\CRA'" />
   </component>
 </application>
