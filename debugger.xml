@@ -68,7 +68,10 @@
     </filter>
   </component>
   <component name="XDebuggerSettings">
-    <data-views />
+    <data-views>
+      <option name="showLibraryStackFrames" value="false" />
+      <show-values-inline>false</show-values-inline>
+    </data-views>
     <general>
       <evaluation-dialog-mode>CODE_FRAGMENT</evaluation-dialog-mode>
     </general>
