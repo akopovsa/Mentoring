@@ -1,22 +1,19 @@
 package module4.banking_application;
 
-import module4.banking_application.utils.BalanceLog;
-import module4.banking_application.utils.WithdrawLog;
-
 public class TestBankAccount {
     public static void main (String[] args){
-        BankAccount accountDebit = new BankAccount("debit");
-        BankAccount accountCredit = new BankAccount("credit");
+        BankAccount debitAccount = new BankAccount("debit",1);
+        Logger loggerDebit = new Logger(debitAccount);
+        debitAccount.add(10000);
+        debitAccount.add(2000);
+        debitAccount.withdraw(200);
+        debitAccount.calculateFee();
+        debitAccount.withdraw(15000); //Reject, withdraw amount more than current balance amount
 
-        new BalanceLog(accountDebit);
-        new BalanceLog(accountCredit);
-        new WithdrawLog(accountDebit);
-        new WithdrawLog(accountCredit);
-
-        accountDebit.add(10000);
-        accountDebit.add(1000);
-        accountCredit.add(15000);
-        accountDebit.withdraw(300);
-        accountCredit.withdraw(200);
+        BankAccount creditAccount = new BankAccount("credit",1,5);
+        Logger loggerCredit = new Logger(creditAccount);
+        creditAccount.add(220000);
+        creditAccount.withdraw(250000);
+        creditAccount.calculateFee();
     }
 }

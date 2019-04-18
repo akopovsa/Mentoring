@@ -4,7 +4,10 @@ public abstract class GeneralBankAccount {
 
     public abstract void add(double amount);
     public abstract void withdraw(double amount);
-    public abstract void calculateFee(int percents);
+    public abstract void calculateFee();
 
+    public abstract void registerObserver(Observer o);
+    public abstract void removeObserver(Observer o);
+    public abstract void notifyObservers ();
 
 }
