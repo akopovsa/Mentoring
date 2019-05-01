@@ -4,7 +4,6 @@ import java.time.LocalTime;
 
 public class Logger implements Observer {
     private int accountNumber;
-    private BankAccount account;
     private String accountType;
     private double balance;
     private double withdrawAmount;
@@ -14,8 +13,7 @@ public class Logger implements Observer {
     private LocalTime now;
 
     Logger(BankAccount account) {
-        this.account = account;
-        this.account.registerObserver(this);
+        account.registerObserver(this);
     }
 
 

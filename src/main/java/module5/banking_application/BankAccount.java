@@ -12,7 +12,7 @@ public class BankAccount extends GeneralBankAccount{
     private double feeAmount;
     private int standartPercent;
     private int overdraftPercent;
-    private ArrayList observers;
+    private ArrayList<Observer> observers = new ArrayList<>();
 
     @Override
     public void add(double amount){
@@ -77,7 +77,6 @@ public class BankAccount extends GeneralBankAccount{
     }
 
     BankAccount(String accountType, int standartPercent, int overdraftPercent) {
-        observers = new ArrayList();
         this.accountNumber = ++accountNumberCounter;
         this.accountType = accountType;
         this.standartPercent = standartPercent;
@@ -85,7 +84,6 @@ public class BankAccount extends GeneralBankAccount{
     }
 
     BankAccount(String accountType, int standartPercent) {
-        observers = new ArrayList();
         this.accountNumber = ++accountNumberCounter;
         this.accountType = accountType;
         this.standartPercent = standartPercent;
