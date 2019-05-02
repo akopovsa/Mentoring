@@ -14,6 +14,23 @@ public class BankAccount extends GeneralBankAccount{
     private int overdraftPercent;
     private ArrayList<Observer> observers = new ArrayList<>();
 
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public int getStandartPercent() {
+        return standartPercent;
+    }
+
+    public int getOverdraftPercent() {
+        return overdraftPercent;
+    }
+
     @Override
     public void add(double amount){
         if (amount <0){
@@ -76,14 +93,14 @@ public class BankAccount extends GeneralBankAccount{
         notifyObservers();
     }
 
-    BankAccount(String accountType, int standartPercent, int overdraftPercent) {
+    public BankAccount(String accountType, int standartPercent, int overdraftPercent) {
         this.accountNumber = ++accountNumberCounter;
         this.accountType = accountType;
         this.standartPercent = standartPercent;
         this.overdraftPercent = overdraftPercent;
     }
 
-    BankAccount(String accountType, int standartPercent) {
+    public BankAccount(String accountType, int standartPercent) {
         this.accountNumber = ++accountNumberCounter;
         this.accountType = accountType;
         this.standartPercent = standartPercent;
