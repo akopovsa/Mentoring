@@ -2,57 +2,85 @@ package module6.codec_rle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class CodecRLE {
 
-    private static String input = "AA";
+    private static void code(String input) {
 
-//    public static List<Character> convertStringToCharList(String str) {
-//        return str
-//               .chars()
-//               .mapToObj(e -> (char) e)
-//               .collect(Collectors.toList());
-//    }
+        List<Character> stringToList = stringToList(input);
+        StringBuffer coded = new StringBuffer();
+        char slash = '/';
+        char[] numbers = {'0','1','2','3','4','5','6','7','8','9'};
 
-
-    private static String code(String input) {
-
-        System.out.println(input);
-
-
-        char[] list = input.toCharArray();
-        List <String> coded_list = new ArrayList<>();
-        int k;
-        int count = 1;
-
-        for (int i = 0; i< list.length-1; i++){
-            for(k=i+1;k<list.length;k++){
-                if(list[i] == list[k]){
-                    count++;
-                } else {
-                    break;
+        for (int i=0; i<stringToList.size();i++){
+            int count=1;
+            if(stringToList.get(i) == slash || new String(numbers).indexOf(stringToList.get(i))>-1){
+                coded.append("/");
+                coded.append(stringToList.get(i));
                 }
+            else{
+            while (i+1<stringToList.size() && stringToList.get(i)==stringToList.get(i+1)){
+                count++;
+                i++;
             }
-            coded_list.add(Integer.toString(count)+list[i]);
-            count=1;
-            i=k-1;
+                coded.append(count);
+                coded.append(stringToList.get(i));
+            }
         }
-        System.out.println(coded_list);
-        return null;
+        System.out.println("Coded: "+ coded.toString());
+        System.out.println("\n");
+
     }
 
-    private static String decode() {
+    private static void decode(String input) {
+        List<Character> stringToList = stringToList(input);
+        StringBuffer decoded = new StringBuffer();
 
-        return null;
+        char slash = '/';
+        for (int i=0; i<stringToList.size();i++){
+
+            if(stringToList.get(i) == slash){
+                decoded.append(stringToList.get(i+1));
+                i++;
+            }else{
+                int count = 0;
+                while(count<Integer.parseInt(String.valueOf(stringToList.get(i)))){
+                    decoded.append(stringToList.get(i+1));
+                    count++;
+
+                }
+                i++;
+            }
+
+        }
+        System.out.println("Decoded: "+ decoded.toString());
+        System.out.println("\n");
+
+
+    }
+
+    private static List<Character> stringToList(String input){
+        System.out.println("Input string: "+ input);
+        List<Character> stringToList = input.chars().mapToObj(e -> (char) e).collect(Collectors.toList());
+        return stringToList;
     }
 
 
     public static void main(String[] args) {
-        code(input);
+
+        code("AAAAaaaBBBBBB/12");
+        code("AaaaBB2");
+        code("AaaaBB//2");
+
+        decode("4A3a6B///1/2");
     }
+
+
 
 
 }
