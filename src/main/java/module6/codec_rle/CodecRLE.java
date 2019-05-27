@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 
 public class CodecRLE {
 
-    private static void code(String input) {
+    public static String code(String input) {
 
         List<Character> stringToList = stringToList(input);
         StringBuffer coded = new StringBuffer();
@@ -34,10 +34,11 @@ public class CodecRLE {
         }
         System.out.println("Coded: "+ coded.toString());
         System.out.println("\n");
+        return coded.toString();
 
     }
 
-    private static void decode(String input) {
+    public static String decode(String input) {
         List<Character> stringToList = stringToList(input);
         StringBuffer decoded = new StringBuffer();
 
@@ -60,8 +61,7 @@ public class CodecRLE {
         }
         System.out.println("Decoded: "+ decoded.toString());
         System.out.println("\n");
-
-
+        return decoded.toString();
     }
 
     private static List<Character> stringToList(String input){

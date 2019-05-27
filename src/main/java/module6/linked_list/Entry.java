@@ -6,7 +6,7 @@ public class Entry {
 
     public Object getElement() {
 
-        return element.toString();
+        return element;
     }
 
     Entry getNext() {

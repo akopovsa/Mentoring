@@ -8,7 +8,7 @@ public class LinkedList {
         return count;
     }
 
-    LinkedList() {
+    public LinkedList() {
 
     }
 
@@ -44,7 +44,7 @@ public class LinkedList {
                 current = current.getNext();
             }
             if(current!=null){
-                return current.getElement().toString();
+                return current.getElement();
             }else{
                 System.out.println("List is empty!");
             }
