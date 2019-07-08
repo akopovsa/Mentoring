@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
@@ -138,11 +139,18 @@ public class HomeWorkChromeTest {
 
         WebElement from = list.get(1);
         WebElement to = list.get(5);
+        System.out.println(to.getLocation());
         Actions act = new Actions(driver);
-        act.dragAndDrop(from, to).build().perform();
-
+        act.clickAndHold(from)
+                .pause(500)
+                //.dragAndDrop(to); - doesn't work
+                //.moveToElement(to) - doesn't work
+                .moveByOffset(0, 150)
+                .release(to)
+                .build()
+                .perform();
         try {
-            Thread.sleep(4000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
