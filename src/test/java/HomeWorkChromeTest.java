@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
@@ -52,7 +51,7 @@ public class HomeWorkChromeTest {
 
     @Test
     public void testTask2_1() {
-        List<String> href = new ArrayList();
+        boolean href = false;
         String url = "https://www.google.com/";
         driver.get(url);
         WebElement search = driver.findElement(By.name("q"));
@@ -60,9 +59,9 @@ public class HomeWorkChromeTest {
         search.sendKeys("selenium automation testing");
         search.submit();
         for (int i = 0; i < 10; i++) {
-            if (href.isEmpty()) {
+            if (!href) {
                 List<WebElement> links = driver.findElements(By.tagName("a"));
-                href = links.stream().map(e -> e.getAttribute("href")).filter(e -> e != null).filter(e -> e.contains("seleniumhq.org")).collect(Collectors.toList());
+                href = links.stream().map(e -> e.getAttribute("href")).filter(e -> e != null).anyMatch(e -> e.contains("seleniumhq.org"));
                 WebElement nextPage = driver.findElement(By.xpath("//*[@id='pnnext']/span[2]"));
                 nextPage.click();
             } else {
@@ -70,7 +69,7 @@ public class HomeWorkChromeTest {
                 break;
             }
         }
-        if (href.isEmpty()) {
+        if (href) {
             System.out.println("`seleniumhq.org` was not found");
         }
     }
